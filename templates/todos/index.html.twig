@@ -11,7 +11,7 @@
 <body>
 <div>
     {% for message in app.session.flashBag.get('info') %}
-        <div class="alert alert-info">{{ message }}</div>
+        <div class="alert alert-info">{{ message}}</div>
     {% endfor %}
     {% for message in app.session.flashBag.get('error') %}
         <div class="alert alert-error">{{ message }}</div>
@@ -21,7 +21,7 @@
     {% endfor %}
     <ol class="list-group">
         {% for name,content in app.session.get('todos') %}
-            <li class="list-group-item">{{ name }} : {{ content }}</li>
+            <li class="list-group-item">{{ name | upper}} : {{ content | capitalize}}</li>
         {% endfor %}
     </ol>
 </div>
