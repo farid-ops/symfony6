@@ -19,4 +19,18 @@ class TabController extends AbstractController
 
         return $this->render('tab/index.html.twig', ['notes' => $notes]);
     }
+
+    #[Route('/users', name: 'tab.users')]
+    public function users()
+    {
+        $users = [
+            ['firstname'=>'aokiji', 'lastname'=>'amiral', 'age'=>29],
+            ['firstname'=>'kizaru', 'lastname'=>'amiral', 'age'=>29],
+            ['firstname'=>'shanks', 'lastname'=>'captain', 'age'=>29],
+            ['firstname'=>'luffy', 'lastname'=>'captain', 'age'=>29],
+            ['firstname'=>'Asce', 'lastname'=>'captain barbe blanche', 'age'=>29]
+        ];
+
+        return $this->render('user/index.html.twig', ['users'=>$users]);
+    }
 }

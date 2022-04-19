@@ -1,0 +1,28 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+    {% include('fragment/date.html.twig') %}
+    <div class="alert alert-success">
+        <a href="{{ path('app_tab', { nombre: 8 }) }}">stats</a>
+    </div>
+<table class="table">
+   <thead class="table-dark">
+       <th>Firstname</th>
+       <th>Lastname</th>
+       <th>Age</th>
+        <th>Message</th>
+   </thead>
+    {% for user in users %}
+    <tbody class="table-{% if loop.index is even %}info{% else %}danger{% endif %}">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.age }}</td>
+        <td>
+            {{ render(controller('App\\Controller\\FirstController::sayHello', { firstname: user.firstname, lastname: user.lastname})) }}
+        </td>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
+{% block navTitle %} Users {% endblock %}
+{% block bodyTitle %}liste des utilisateurs{% endblock %}
