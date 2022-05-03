@@ -11,7 +11,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create('fr_FR');//instanciation de faker
-        for ($i=0; $i < 20; $i++){
+        for ($i=0; $i < 40; $i++){
             $person = new Person();
             $person->setFirstname($faker->firstName);
             $person->setLastname($faker->lastName);

@@ -19,13 +19,22 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/findAll/{page?1}/{size?12}',  name:'person.all')]
+    #[Route('/findAll/{page?1}/{size?8}',  name:'person.all')]
     public function findAll(ManagerRegistry $doctrine, $page, $size): Response
     {
         $this->addFlash("info", "la liste des personnes");
         $repository = $doctrine->getRepository(Person::class);
         $personnesAll = $repository->findBy([],[], $size, ($page-1)*$size);
-        return $this->render('person/index.html.twig', ['personnesAll'=>$personnesAll]);
+        $persons = $repository->count([]);
+        $pages = ceil($persons/$size);
+        return $this->render('person/index.html.twig',
+            [
+                'personnesAll'=>$personnesAll,
+                'pages' => $pages,
+                'page' => $page,
+                'size' => $size,
+                'isPaginated' => true
+            ]);
     }
 
     #[Route('/{id<\d+>}', name: 'person.detail')]
