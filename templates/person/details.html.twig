@@ -1,0 +1,16 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ person.firstname }}</h5>
+            <h6>{{ person.firstname }} {{ person.lastname }}</h6>
+            <p class="card-text">Age : {{ person.age }} ans</p>
+            <a href="{{ path('person.all') }}">liste</a>
+        </div>
+    </div>
+{% endblock %}
+{% block title %}
+    Details person
+{% endblock %}
+

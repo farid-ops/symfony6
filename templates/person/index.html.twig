@@ -1,0 +1,18 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Hello PersonController!{% endblock %}
+{% block bodyTitle %}Liste des personnes{% endblock %}
+{% block body %}
+<div class="row">
+    {% for personne in personnesAll%}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ personne.firstname }}</h5>
+            <h6>{{ personne.firstname }} {{ personne.lastname }}</h6>
+            <p class="card-text">Age : {{ personne.age }} ans</p>
+            <a href="{{ path('person.detail', {id: personne.id}) }}">Details</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

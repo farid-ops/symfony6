@@ -1,0 +1,9 @@
+{% extends 'template.html.twig' %}
+
+{% block bodyTitle %} liste des personnes {% endblock %}
+{% block body %}
+    <div class="alert alert-info">
+{#        {{ dump(person) }}#}
+        {{ person.firstname }} {{ person.lastname }} à {{ person.age }}
+    </div>
+{% endblock %}
